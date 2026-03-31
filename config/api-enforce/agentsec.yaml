@@ -1,0 +1,16 @@
+llm_integration_mode: api
+
+api_mode:
+  llm_defaults:
+    fail_open: false
+    timeout: 5
+
+  llm:
+    mode: enforce
+    endpoint: "${AI_DEFENSE_API_MODE_LLM_ENDPOINT}"
+    api_key: "${AI_DEFENSE_API_MODE_LLM_API_KEY}"
+    rules:
+      - rule_name: "Prompt Injection"
+      - rule_name: "PII"
+        entity_types: ["Email Address", "Phone Number"]
+      - rule_name: "Code Detection"
