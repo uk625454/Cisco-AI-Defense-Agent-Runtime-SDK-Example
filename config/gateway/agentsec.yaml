@@ -1,0 +1,20 @@
+llm_integration_mode: gateway
+
+gateway_mode:
+  llm_mode: "on"
+
+  llm_defaults:
+    fail_open: false
+    timeout: 60
+    retry:
+      total: 3
+      backoff_factor: 0.5
+      status_codes: [429, 500, 502, 503, 504]
+
+  llm_gateways:
+    bedrock-1:
+      provider: "bedrock"
+      default: true
+      gateway_url: "${AI_DEFENSE_BEDROCK_GATEWAY_URL}"
+      gateway_api_key: "${AI_DEFENSE_BEDROCK_GATEWAY_API_KEY}"
+      auth_mode: "api_key"
